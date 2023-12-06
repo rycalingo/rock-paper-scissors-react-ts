@@ -1,3 +1,5 @@
+import ScoreAndResults from "./sections/ScoreAndResults";
+import ChooseAndPlay from "./sections/ChooseAndPlay";
 import styles from "./App.module.css";
 
 function App() {
