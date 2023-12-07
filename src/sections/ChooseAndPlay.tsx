@@ -1,16 +1,17 @@
 import styles from "./ChooseAndPlay.module.css";
 import HandSelection from "../components/HandSelection";
-
-import { FaRegHandRock, FaRegHandPaper, FaRegHandScissors } from "react-icons/fa";
+import { useOptions } from "../context/optionsContext";
 
 const ChooseAndPlay = () => {
+	const optionsContext = useOptions();
+
+	const HandOptionsArray = optionsContext.options.map((hand) => {
+		return <HandSelection name={hand.name} icon={hand.icon} />;
+	});
+
 	return (
 		<>
-			<div className={styles.choiceBtnCtn}>
-				<HandSelection name="rock" icon={<FaRegHandRock size={60} />} />
-				<HandSelection name="paper" icon={<FaRegHandPaper size={60} />} />
-				<HandSelection name="scissors" icon={<FaRegHandScissors size={60} />} />
-			</div>
+			<div className={styles.choiceBtnCtn}>{HandOptionsArray}</div>
 			<button className={styles.playBtn}>Play</button>
 		</>
 	);
