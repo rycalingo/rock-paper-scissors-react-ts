@@ -13,7 +13,10 @@ export default function scoreReducer(state: IInitialState, action: ActionTypes) 
 		default:
 			return {
 				...state,
-				results: {},
+				results: {
+					winner: "error",
+					message: "We have an error",
+				},
 			};
 	}
 }
