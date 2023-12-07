@@ -5,8 +5,8 @@ import { useOptions } from "../context/optionsContext";
 const ChooseAndPlay = () => {
 	const optionsContext = useOptions();
 
-	const HandOptionsArray = optionsContext.options.map((hand) => {
-		return <HandSelection name={hand.name} icon={hand.icon} />;
+	const HandOptionsArray = optionsContext.options.map((hand, i) => {
+		return <HandSelection name={hand.name} icon={hand.icon} handChoiceIndex={i} />;
 	});
 
 	return (
