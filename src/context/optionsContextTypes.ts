@@ -11,8 +11,27 @@ export interface IOptions {
 
 export interface IoptionsContext {
   options: IOptions[]
+  state: IInitialState
 }
 
 export interface Props {
   children: React.ReactNode
+}
+
+interface IResults {
+  winner: string;
+  message: string;
+}
+
+interface IScore {
+  player: number;
+  computer: number;
+}
+
+export interface IInitialState {
+  playerHand: number;
+  computerHand: number;
+  runTimer: boolean;
+  score: IScore;
+  results: IResults;
 }
