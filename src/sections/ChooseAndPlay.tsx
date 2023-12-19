@@ -15,6 +15,7 @@ const ChooseAndPlay = () => {
 	function play() {
 		const numberRoll = randomNumber(3);
 		dispatch({ type: OptionActionKind.UPDATE_COMPUTER_CHOICE, payload: numberRoll });
+		dispatch({ type: OptionActionKind.RUN_TIMER, payload: true });
 	}
 
 	return (
