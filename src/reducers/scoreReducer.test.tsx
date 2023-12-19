@@ -37,6 +37,7 @@ const TestingComponent = (props: Iprops) => {
 	return (
 		<>
 			<p>playerhand: {state.playerHand}</p>
+			<p>computerhand: {state.computerHand}</p>
 		</>
 	);
 };
@@ -46,5 +47,11 @@ describe("scoreReducer", () => {
 		render(<TestingComponent myaction={{ type: OptionActionKind.UPDATE_PLAYER_CHOICE, payload: 0 }} />);
 
 		expect(screen.getByText(/playerhand: 0/)).toBeInTheDocument();
+	});
+
+	it("should update the scoreReducer with the correct computerhand", () => {
+		render(<TestingComponent myaction={{ type: OptionActionKind.UPDATE_COMPUTER_CHOICE, payload: 1 }} />);
+
+		expect(screen.getByText(/computerhand: 1/)).toBeInTheDocument();
 	});
 });
