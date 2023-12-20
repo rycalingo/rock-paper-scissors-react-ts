@@ -32,7 +32,7 @@ const TestingComponent = () => {
 };
 
 describe("OptionsContext", () => {
-	it("should render the component with the cotext initial values", () => {
+	it("should render the component with the context initial values", () => {
 		render(
 			<OptionsProvider>
 				<TestingComponent />
