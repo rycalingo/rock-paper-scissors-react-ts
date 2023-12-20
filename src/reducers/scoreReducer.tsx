@@ -24,7 +24,7 @@ export default function scoreReducer(state: IInitialState, action: ActionTypes) 
 			return {
 				...state,
 				results: {
-					winner: "No one",
+					winner: "Draw",
 					message: payload,
 				},
 			};
