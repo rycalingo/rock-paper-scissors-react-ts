@@ -8,7 +8,7 @@ const ScoreAndResults = () => {
 	const [timer, setTimer] = useState<number>(3);
 	const optionContext = useOptions();
 	const { runTimer } = optionContext.state;
-	const { dispatch } = optionContext;
+	const { dispatch, options } = optionContext;
 
 	const playerHandIndex = optionContext.state.playerHand;
 	const playerHandName = optionContext.options[playerHandIndex].name;
@@ -55,6 +55,11 @@ const ScoreAndResults = () => {
 			</div>
 			<div className={styles.results}>
 				<div className={styles.playerHand}>
+					{runTimer && winner && (
+						<>
+							<div className={styles.player_shake}>{options[0].icon}</div>
+						</>
+					)}
 					{!runTimer && winner && (
 						<>
 							<div>{playerHandIcon}</div>
@@ -72,6 +77,11 @@ const ScoreAndResults = () => {
 					{!runTimer && winner && <p className={styles.resultMessage}>{message}</p>}
 				</div>
 				<div className={styles.computerHand}>
+					{runTimer && winner && (
+						<>
+							<div className={styles.computer_shake}>{options[0].icon}</div>
+						</>
+					)}
 					{!runTimer && winner && (
 						<>
 							<div>{computerHandIcon}</div>
