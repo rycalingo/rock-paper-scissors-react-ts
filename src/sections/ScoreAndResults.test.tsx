@@ -104,4 +104,38 @@ describe("ScoreAndResults", () => {
 		expect(screen.getAllByTestId(/rock/i)).toHaveLength(2);
 		expect(screen.getAllByTestId(/scissors/i)).toHaveLength(2);
 	});
+
+	it("should dispaly a message on the page - Draw!", () => {
+		vi.useFakeTimers();
+
+		render(
+			<OptionsProvider>
+				<ScoreAndResults />
+				<ChooseAndPlay />
+			</OptionsProvider>
+		);
+
+		const hand = screen.getByText(/rock/i);
+		expect(hand).toBeInTheDocument();
+
+		fireEvent.click(hand);
+		fireEvent.click(screen.getByText("Play"));
+
+		act(() => {
+			vi.advanceTimersByTime(3000);
+		});
+
+		screen.debug();
+
+		expect(screen.getByText(/Draw!/i)).toBeInTheDocument();
+		expect(screen.getByText(/We have a draw/i)).toBeInTheDocument();
+
+		expect(screen.getByText(/Player: 0/i)).toBeInTheDocument();
+		expect(screen.getByText(/Computer: 0/i)).toBeInTheDocument();
+
+		expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
+		expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
+
+		expect(screen.getAllByTestId(/rock/i)).toHaveLength(3);
+	});
 });
