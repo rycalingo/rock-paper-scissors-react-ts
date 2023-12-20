@@ -59,5 +59,14 @@ describe("ScoreAndResults", () => {
 
 		expect(screen.getByText(/Player wins!/i)).toBeInTheDocument();
 		expect(screen.getByText(/Paper beats Rock/i)).toBeInTheDocument();
+
+		expect(screen.getByText(/Player: 1/i)).toBeInTheDocument();
+		expect(screen.getByText(/Computer: 0/i)).toBeInTheDocument();
+
+		expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
+		expect(screen.getAllByTestId(/paper/i)[0]).toBeVisible();
+
+		expect(screen.getAllByTestId(/rock/i)).toHaveLength(2);
+		expect(screen.getAllByTestId(/paper/i)).toHaveLength(2);
 	});
 });
