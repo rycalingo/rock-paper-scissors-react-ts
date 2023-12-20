@@ -20,6 +20,8 @@ const ScoreAndResults = () => {
 	const computerHandIcon = optionContext.options[computerHandIndex].icon;
 	const computerScore = optionContext.state.score.computer;
 
+	const { winner, message } = optionContext.state.results;
+
 	useEffect(() => {
 		if (runTimer) {
 			const newInterValId = setInterval(() => {
@@ -52,15 +54,31 @@ const ScoreAndResults = () => {
 				</div>
 			</div>
 			<div className={styles.results}>
-				<div className={styles.playerHand}>{playerHandIcon}</div>
+				<div className={styles.playerHand}>
+					{!runTimer && winner && (
+						<>
+							<div>{playerHandIcon}</div>
+							<p>{playerHandName}</p>
+						</>
+					)}
+				</div>
 				<div className={styles.midCol}>
 					{runTimer && (
 						<p data-testid="timer" className={styles.timer}>
 							{timer}
 						</p>
 					)}
+					{!runTimer && winner && <p className={styles.resultWinner}>{winner} wins!</p>}
+					{!runTimer && winner && <p className={styles.resultMessage}>{message}</p>}
 				</div>
-				<div className={styles.computerHand}>{computerHandIcon}</div>
+				<div className={styles.computerHand}>
+					{!runTimer && winner && (
+						<>
+							<div>{computerHandIcon}</div>
+							<p>{computerHandName}</p>
+						</>
+					)}
+				</div>
 			</div>
 		</>
 	);
