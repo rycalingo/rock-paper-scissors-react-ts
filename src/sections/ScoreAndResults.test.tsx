@@ -35,7 +35,7 @@ describe("ScoreAndResults", () => {
 		expect(screen.getByTestId("timer")).toHaveTextContent("1");
 	});
 
-	it("should dispaly the correct winner message on the page", () => {
+	it("should dispaly a message on the page - Player wins!", () => {
 		vi.useFakeTimers();
 
 		render(
@@ -68,5 +68,40 @@ describe("ScoreAndResults", () => {
 
 		expect(screen.getAllByTestId(/rock/i)).toHaveLength(2);
 		expect(screen.getAllByTestId(/paper/i)).toHaveLength(2);
+	});
+
+	it("should dispaly a message on the page - Computer wins!", () => {
+		vi.useFakeTimers();
+
+		render(
+			<OptionsProvider>
+				<ScoreAndResults />
+				<ChooseAndPlay />
+			</OptionsProvider>
+		);
+
+		const hand = screen.getByText(/scissors/i);
+		expect(hand).toBeInTheDocument();
+
+		fireEvent.click(hand);
+		fireEvent.click(screen.getByText("Play"));
+
+		act(() => {
+			vi.advanceTimersByTime(3000);
+		});
+
+		screen.debug();
+
+		expect(screen.getByText(/Computer wins!/i)).toBeInTheDocument();
+		expect(screen.getByText(/Rock beats Scissors/i)).toBeInTheDocument();
+
+		expect(screen.getByText(/Player: 0/i)).toBeInTheDocument();
+		expect(screen.getByText(/Computer: 1/i)).toBeInTheDocument();
+
+		expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
+		expect(screen.getAllByTestId(/scissors/i)[0]).toBeVisible();
+
+		expect(screen.getAllByTestId(/rock/i)).toHaveLength(2);
+		expect(screen.getAllByTestId(/scissors/i)).toHaveLength(2);
 	});
 });
