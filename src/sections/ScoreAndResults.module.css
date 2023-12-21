@@ -88,3 +88,31 @@
     transform: scaleY(-1) rotate(-80deg);
   }
 }
+
+.winnerAction {
+  animation: winnerAnimation 5.5s ease-in-out infinite;
+}
+
+@keyframes winnerAnimation {
+
+  15% {
+    transform: scale(1.2)
+  }
+
+  20%,
+  30% {
+    transform: rotate(-20deg) scale(1.1)
+  }
+
+  25% {
+    transform: rotate(20deg) scale(1.2)
+  }
+
+  35% {
+    transform: rotate(0deg) scale(1.1)
+  }
+
+  50% {
+    transform: scale(1)
+  }
+}
