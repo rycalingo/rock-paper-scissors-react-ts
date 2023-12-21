@@ -54,10 +54,12 @@ const ScoreAndResults = () => {
 				</div>
 			</div>
 			<div className={styles.results}>
-				<div className={`${styles.playerHand} ${winner === "Player" ? styles.winnerAction : ""}`}>
+				<div data-testid="playerResult" className={`${styles.playerHand} ${winner === "Player" ? styles.winnerAction : ""}`}>
 					{runTimer && (
 						<>
-							<div className={styles.player_shake}>{options[0].icon}</div>
+							<div data-testid="playerShake" className={styles.player_shake}>
+								{options[0].icon}
+							</div>
 						</>
 					)}
 					{!runTimer && winner && (
@@ -76,10 +78,12 @@ const ScoreAndResults = () => {
 					{!runTimer && winner && <p className={styles.resultWinner}>{winner !== "Draw" ? `${winner} wins` : winner}!</p>}
 					{!runTimer && winner && <p className={styles.resultMessage}>{message}</p>}
 				</div>
-				<div className={`${styles.computerHand}  ${winner === "Computer" ? styles.winnerAction : ""}`}>
+				<div data-testid="computerResult" className={`${styles.computerHand}  ${winner === "Computer" ? styles.winnerAction : ""}`}>
 					{runTimer && (
 						<>
-							<div className={styles.computer_shake}>{options[0].icon}</div>
+							<div data-testid="computerShake" className={styles.computer_shake}>
+								{options[0].icon}
+							</div>
 						</>
 					)}
 					{!runTimer && winner && (
