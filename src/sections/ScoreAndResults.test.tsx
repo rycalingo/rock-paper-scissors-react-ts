@@ -224,4 +224,36 @@ describe("ScoreAndResults", () => {
 
 		screen.debug();
 	});
+
+	it("should reset the previous winner message results", () => {
+		vi.useFakeTimers();
+
+		render(
+			<OptionsProvider>
+				<ScoreAndResults />
+				<ChooseAndPlay />
+			</OptionsProvider>
+		);
+
+		const hand = screen.getByText(/scissors/i);
+
+		fireEvent.click(hand);
+		fireEvent.click(screen.getByText("Play"));
+
+		act(() => {
+			vi.advanceTimersByTime(3000);
+		});
+
+		expect(screen.getByTestId("computerResult")).toHaveClass("winnerAction");
+		expect(screen.getByText(/Computer wins!/i)).toBeInTheDocument();
+		expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
+		expect(screen.getAllByTestId(/rock/i)).toHaveLength(2);
+
+		fireEvent.click(screen.getByText(/paper/i));
+
+		screen.debug();
+		expect(screen.getByTestId("computerResult")).not.toHaveClass("winnerAction");
+		expect(screen.queryByText(/Computer wins!/i)).toBeNull();
+		expect(screen.getAllByTestId(/rock/i)).toHaveLength(1);
+	});
 });
