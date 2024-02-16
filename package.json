@@ -1,4 +1,5 @@
 {
+	"homepage": "https://rycalingo.github.io/rock-paper-scissors-react-ts",
 	"name": "rock-paper-scissors-game",
 	"private": true,
 	"version": "0.0.0",
@@ -9,7 +10,9 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"test": "vitest",
-		"coverage": "vitest run --coverage"
+		"coverage": "vitest run --coverage",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"dependencies": {
 		"@react-icons/all-files": "^4.1.0",
@@ -30,6 +33,7 @@
 		"eslint": "^8.53.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.4",
+		"gh-pages": "^6.1.1",
 		"jsdom": "^23.0.1",
 		"typescript": "^5.2.2",
 		"vite": "^5.0.0",
