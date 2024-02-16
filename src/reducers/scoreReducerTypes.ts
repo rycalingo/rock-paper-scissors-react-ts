@@ -4,7 +4,7 @@ export enum OptionActionKind {
   RUN_TIMER = 'RUN_TIMER',
   DRAW = "DRAW",
   PLAYER_WINS = "PLAYER_WINS",
-  COMPUTER_WINS = "COMPUTER_WINS"
+  COMPUTER_WINS = "COMPUTER_WINS",
 }
 
 interface UpdatePlayerChoice {

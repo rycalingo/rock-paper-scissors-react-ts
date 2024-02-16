@@ -86,7 +86,7 @@ describe("scoreReducer", () => {
 	});
 
 	it("should update the scoreReducer with the Default case", () => {
-		render(<TestingComponent myaction={{ type: OptionActionKind.RANDOM, payload: "Its a draw" }} />);
+		render(<TestingComponent myaction={{ type: OptionActionKind.DRAW, payload: "Its a draw" }} />);
 
 		expect(screen.getByText(/winner: Error/i));
 		expect(screen.getByText(/We have an error/i));
